@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histogram Generator</title>
+    <link rel="stylesheet" href="./histogram.css">
+</head>
+<body>
+    <header>
+        <h1>Histogram Generator</h1>
+    </header>
+    <main>
+        <section class="left" id="lower-bounds">
+            <h2>Lower bounds</h2>
+            <table>
+                <tr>
+                    <td>Max</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-max" value="100.00" /></td> 
+                </tr>
+                <tr>
+                    <td>A+</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-aplus" value="95.00" /></td> 
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-a" value="90.00" /></td> 
+                </tr>
+                <tr>
+                    <td>A-</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-aminus" value="85.00" /></td> 
+                </tr>
+                <tr>
+                    <td>B+</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-bplus" value="80.00" /></td> 
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-b" value="75.00" /></td> 
+                </tr>
+                <tr>
+                    <td>B-</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-bminus" value="70.00" /></td> 
+                </tr>
+                <tr>
+                    <td>C+</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-cplus" value="65.00" /></td> 
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-c" value="60.00" /></td> 
+                </tr>
+                <tr>
+                    <td>C-</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-cminus" value="55.00" /></td> 
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-d" value="50.00" /></td> 
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td><input class="lower-bounds-input" type="number" name="lower-bounds-f" value="0.00" /></td> 
+                </tr>
+            </table>
+        </section>
+        <div class="right">
+            <section id="histogram">
+                <h2>Histogram</h2>
+                <table>
+                    <tr>
+                        <td>Max</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>A+</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>A-</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>B+</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>B-</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>C+</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>C-</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td class="histogram-value"></td> 
+                    </tr>
+                </table>
+            </section>
+            <section id="grade-input">
+                New Grade: <input type="number" class="grade-input-box"
+                id="new-grade" name="new-grade"
+                />
+            </section>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="./calculate.js"></script>
+</body>
+</html>
