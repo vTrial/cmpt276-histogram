@@ -11,7 +11,9 @@ const addToHist = (gradeIn) => {
     }
     // if lower than f, we don't crash :)
     if (!lowerBoundFound) {
-        return;
+        alert("There's a number which is below all thresholds.")
+        const index = grades.indexOf(gradeIn);
+        grades.splice(index, 1)
     }
     let lowerBoundsToHist = document.querySelectorAll(".histogram-value")[lowerBoundsIndex];
     lowerBoundsToHist.innerHTML += "✗";
@@ -40,3 +42,7 @@ lowerBounds.onchange = () => {
         addToHist(grade);
     });
 }
+
+grades.forEach(grade => {
+    addToHist(grade);
+});
