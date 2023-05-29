@@ -45,16 +45,26 @@ const checkBounds = () => {
         if (i > 0) {
             let boundsPrev = Number(lowerBoundsTemp[i - 1].value)
             if (boundsInt > boundsPrev && boundsInt > gradesBounds[i]) {
-                for (let j = 1; j < i; j++) {
-                    lowerBoundsTemp[j].value = boundsInt
+                let lowerBoundsEnded = false;
+                for (let j = i - 1; j > 0 && !lowerBoundsEnded; j--) {
+                    if (Number(lowerBoundsTemp[j + 1].value) > Number(lowerBoundsTemp[j].value)) {
+                        lowerBoundsTemp[j].value = Number(lowerBoundsTemp[j + 1].value);
+                    } else {
+                        lowerBoundsEnded = true;
+                    }
                 }
             }
         }
         if (i < lowerBoundsTemp.length - 1) {
             let boundsNext = Number(lowerBoundsTemp[i + 1].value)
             if (boundsInt < boundsNext && boundsInt < gradesBounds[i]) {
-                for (let j = lowerBoundsTemp.length - 2; j > i; j--) {
-                    lowerBoundsTemp[j].value = boundsInt
+                let lowerBoundsEnded = false;
+                for (let j = i + 1; j < lowerBoundsTemp.length - 1 && !lowerBoundsEnded; j++) {
+                    if (Number(lowerBoundsTemp[j - 1].value) < Number(lowerBoundsTemp[j].value)) {
+                        lowerBoundsTemp[j].value = Number(lowerBoundsTemp[j - 1].value);
+                    } else {
+                        lowerBoundsEnded = true;
+                    }
                 }
             }
         }
@@ -66,7 +76,7 @@ const checkBounds = () => {
 }
 let grades = []
 let gradesBoundsEles = document.querySelectorAll('.lower-bounds-input')
-gradesBounds = []
+let gradesBounds = []
 gradesBoundsEles.forEach(grade => {
     gradesBounds.push(grade.value);
   });
