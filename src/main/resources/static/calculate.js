@@ -30,6 +30,9 @@ const clearHist = () => {
 const checkBounds = () => {
     let lowerBoundsTemp = document.querySelectorAll('.lower-bounds-input');
     for (let i = 0; i < lowerBoundsTemp.length; i++) {
+        if (lowerBoundsTemp[i].value == "") {
+            lowerBoundsTemp[i].value = 0
+        }
         let boundsInt = Number(lowerBoundsTemp[i].value)
         if (boundsInt > 100) {
             lowerBoundsTemp[i].value = 100
