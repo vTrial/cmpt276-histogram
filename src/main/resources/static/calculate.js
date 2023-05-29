@@ -16,7 +16,7 @@ const addToHist = (gradeIn) => {
         }
         lowerBoundsTempIndex += 1;
     }
-    let lowerBoundsToHist = document.querySelectorAll(".histogram-value")[lowerBoundsIndex];
+    let lowerBoundsToHist = document.querySelectorAll(".histogram-value")[lowerBoundsTempIndex];
     lowerBoundsToHist.innerHTML += "✗";
 }
 
@@ -72,7 +72,7 @@ let newGrade = document.getElementById("new-grade")
 newGrade.onkeydown = (event) => {
     if (event.code == "Enter") {
         let gradeIn = Number(document.getElementById("new-grade").value);
-        grades.push(gradeIn);
+        if (gradeIn >= 0 && gradeIn <= 100) grades.push(gradeIn);
         addToHist(gradeIn);
     }
 };
