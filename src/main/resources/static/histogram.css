@@ -36,11 +36,31 @@ table {
 #histogram {
     margin-bottom: 1em;
 }
+#hist-table {
+    table-layout: auto;
+    width:auto;
+}
+.histogram-value {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    padding: 0;
+}
 .left, .right {
     float: left;
-    width: 30%;
+    width: 25em
 }
 #grade-input {
-    padding: 1em 1em 6em 1em;
+    padding: 1em 1em 5em 1em;
     height: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }

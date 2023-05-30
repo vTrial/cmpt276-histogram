@@ -1,29 +1,52 @@
+const histWidthEdit = () => {
+    let gradeCount = grades.length;
+    let histValues = document.querySelectorAll(".histogram-value");
+    histValues.forEach(histValue => {
+        if (grades.length == 0) {
+            let scaleValue = 40 / 11 / histValue.innerHTML.length
+            histValue.style.transform = `scaleX(${scaleValue})`;
+        }
+        let histValueInner = Number(histValue.innerHTML);
+        let widthPercent = histValueInner / gradeCount
+        let translateValue = 0.2 * widthPercent / histValue.innerHTML.length + (histValue.innerHTML.length - 1) * 0.3
+        let scaleValue = 40 * widthPercent / histValue.innerHTML.length
+        histValue.style.transform = `scaleX(${scaleValue}) translateX(${translateValue}em)`;
+    });
+}
+
 const addToHist = (gradeIn) => {
     let lowerBoundsTemp = document.querySelectorAll('.lower-bounds-input');
     let lowerBoundsTempFound = false;
     let lowerBoundsTempIndex = 0;
+    let gradeInputErrorText = document.getElementById("grade-input-error");
     if (gradeIn < 0) {
-        alert("The grade inputted is too low");
+        gradeInputErrorText.innerHTML = "Please input higher grade."
         return;
     } else if (gradeIn > 100) {
-        alert("The grade inputted is too high");
+        gradeInputErrorText.innerHTML = "Please input lower grade."
         return;
+    } else {
+        gradeInputErrorText.innerHTML = "​"
     }
     while (!lowerBoundsTempFound && lowerBoundsTempIndex < lowerBoundsTemp.length) {
-        if (gradeIn > Number(lowerBoundsTemp[lowerBoundsTempIndex].value)) {
-            lowerBoundsTempIndex -= 1;
+        if (gradeIn >= Number(lowerBoundsTemp[lowerBoundsTempIndex].value)) {
+            lowerBoundsTempIndex -= 2;
             lowerBoundsTempFound = true;
+            if (lowerBoundsTempIndex < -1) {
+                lowerBoundsTempIndex = -1
+            }
+
         }
         lowerBoundsTempIndex += 1;
     }
     let lowerBoundsToHist = document.querySelectorAll(".histogram-value")[lowerBoundsTempIndex];
-    lowerBoundsToHist.innerHTML += "✗";
+    lowerBoundsToHist.innerHTML = Number(lowerBoundsToHist.innerHTML) + 1
 }
 
 const clearHist = () => {
     let histList = document.querySelectorAll(".histogram-value");
     histList.forEach(hist => {
-        hist.innerHTML = ""
+        hist.innerHTML = "0"
     });
 }
 
@@ -87,6 +110,7 @@ newGrade.onkeydown = (event) => {
         let gradeIn = Number(document.getElementById("new-grade").value);
         if (gradeIn >= 0 && gradeIn <= 100) grades.push(gradeIn);
         addToHist(gradeIn);
+        histWidthEdit()
     }
 };
 let lowerBounds = document.getElementById("lower-bounds")
@@ -96,8 +120,10 @@ lowerBounds.onchange = () => {
     grades.forEach(grade => {
         addToHist(grade);
     });
+    histWidthEdit();
 }
 
 grades.forEach(grade => {
     addToHist(grade);
 });
+histWidthEdit();
